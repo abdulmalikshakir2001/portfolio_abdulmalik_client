@@ -1,9 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authUserSlice from './features/authUser/authUserSlice'
+import allContactsSlice from './features/allContacts/allContactsSlice'
+
+
+
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      authUser: authUserSlice
+      authUser: authUserSlice,
+      allContacts:allContactsSlice
     }
 
   })
