@@ -6,7 +6,7 @@ import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-function page() {
+function UploadProject() {
   const [title,setTitle] =  useState("");
   const [image, setImage] = useState('');
   const handleSubmit = (e) =>{
@@ -135,4 +135,4 @@ theme="dark"
   );
 }
 
-export default page;
+export default UploadProject;

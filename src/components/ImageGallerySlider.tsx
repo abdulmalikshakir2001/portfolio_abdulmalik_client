@@ -32,10 +32,7 @@ const ImageGallerySlider = () => {
   const prevCard = () => {
     setCurrent(current === 0 ? cards.length - 1 : current - 1);
   };
-
   return (
-
-
     <div className='flex flex-col  items-center justify-center' id="portfolio" >
       <h2 className='uppercase text-4xl font-bold mb-4' >my portfolio</h2>
       <div className="flex flex-wrap md:flex-nowrap  justify-center gap-6  md:flex-row flex-col items-center">
@@ -50,14 +47,11 @@ const ImageGallerySlider = () => {
             <p className='mt-4 font-bold text-center' >{cards[index].title}</p>
           </div>
         ))
-
     }
-
         <button onClick={nextCard}><FaAnglesRight size="40px" /></button>
       </div>
     </div>
   );
 };
-
 export default ImageGallerySlider;
 
