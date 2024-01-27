@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function UploadProject() {
   const [title,setTitle] =  useState("");
   const [image, setImage] = useState('');
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
     const formData = new FormData();
     formData.append('title', title);
