@@ -23,7 +23,7 @@ const ImageGallerySlider = () => {
   const [cards,setCards] = useState<ICardsType[]> ([])
   const [runUseEffectAgain,setRunUseEffectAgain] = useState(false)
   useEffect(()=>{
-    fetchApi(`${process.env.BACKEND_URL}/api/project/allProjects`,"GET",{}).then((data)=>{
+    fetchApi(`https://portfolio-abdulmalik-server.vercel.app/api/project/allProjects`,"GET",{}).then((data)=>{
       setCards(data.allProjects)
     })
     setRunUseEffectAgain(true)
