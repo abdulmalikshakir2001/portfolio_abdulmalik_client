@@ -17,7 +17,7 @@ const nextConfig = {
           {
             source: '/:path*',
             // destination: 'http://localhost:8000/:path*', // Matched parameters can be used in the destination
-            destination: 'https://vercel.com/abdulmalikshakir2001s-projects/portfolio-abdulmalik-client/:path*', // Matched parameters can be used in the destination
+            destination: 'https://vercel.com/abdulmalikshakir2001s-projects/portfolio-abdulmalik-server/:path*', // Matched parameters can be used in the destination
           },
         ]
       },
