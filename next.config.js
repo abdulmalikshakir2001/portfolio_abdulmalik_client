@@ -12,14 +12,7 @@ const nextConfig = {
       },
     ],
   },
-      async rewrites() {
-        return [
-          {
-            source: '/:path*',
-            destination: 'https://portfolio-abdulmalik-server.vercel.app/:path*', // Matched parameters can be used in the destination
-          },
-        ]
-      },
+ 
 }
 
 
