@@ -22,8 +22,9 @@ const ImageGallerySlider = () => {
   const [current, setCurrent] = useState(0); // Current index
   const [cards,setCards] = useState<ICardsType[]> ([])
   const [runUseEffectAgain,setRunUseEffectAgain] = useState(false)
+  // https://portfolio-abdulmalik-server.vercel.app
   useEffect(()=>{
-    fetchApi(`https://portfolio-abdulmalik-server.vercel.app/api/project/allProjects`,"GET",{}).then((data)=>{
+    fetchApi(`/api/project/allProjects`,"GET",{}).then((data)=>{
       setCards(data.allProjects)
     })
     setRunUseEffectAgain(true)
