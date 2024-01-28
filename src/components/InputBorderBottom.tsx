@@ -1,6 +1,8 @@
 'use client'
 
-function InputBorderBottom({type,name,id,placeholder,input,setInput}) {
+import { IInputProps } from "@/interfaces/IInputProps";
+
+function InputBorderBottom({type,name,id,placeholder,input,setInput}:IInputProps) {
   return (
     <input
       type={type}

@@ -1,5 +1,5 @@
 import * as jose from "jose";
-export default async function verifyJwtToken(authUserToken){
+export default async function verifyJwtToken(authUserToken:Uint8Array|string){
     const secret = new TextEncoder().encode(
         'abdulmalikshakir2001',
       )

@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 function UploadProject() {
   const [title,setTitle] =  useState("");
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState<string | Blob> ("");
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
     const formData = new FormData();
@@ -49,8 +49,11 @@ function UploadProject() {
 
     
   }
-  function onImageChange(event) {
-    setImage(event.target.files[0]);
+  function onImageChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.files) {
+      setImage(event.target.files[0]);
+    }
+    
   }
   return (
     <>

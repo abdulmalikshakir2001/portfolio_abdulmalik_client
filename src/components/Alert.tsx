@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+type AlertProps = {
+  message: string;
+  type: string;
+  show: boolean;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const Alert = ({ message, type ,show,setShow}) => {
+const Alert = ({ message, type,show,setShow}:AlertProps) => {
 
   const baseStyle = 'border px-4 py-3 rounded relative';
   let alertStyle;

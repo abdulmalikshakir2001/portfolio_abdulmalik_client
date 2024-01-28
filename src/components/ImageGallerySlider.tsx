@@ -6,20 +6,27 @@ import { FaAnglesRight,FaAnglesLeft } from "react-icons/fa6";
 
 import { fetchApi } from '@/utility_functions/fetchApi';
 
+interface ICardsType {
+  createdAt: string;
+  image: string;
+  title: string;
+  updatedAt: string;
+  __v: number;
+  _id: string;
+}
+
 const ImageGallerySlider = () => {
   
 
   
   const [current, setCurrent] = useState(0); // Current index
-  const [cards,setCards] = useState([])
+  const [cards,setCards] = useState<ICardsType[]> ([])
   const [runUseEffectAgain,setRunUseEffectAgain] = useState(false)
   useEffect(()=>{
     fetchApi('/api/project/allProjects',"GET",{}).then((data)=>{
-      // console.log(data.allProjects)
       setCards(data.allProjects)
     })
     setRunUseEffectAgain(true)
-    console.log('fetch api')
 
   },[])
   useEffect(()=>{

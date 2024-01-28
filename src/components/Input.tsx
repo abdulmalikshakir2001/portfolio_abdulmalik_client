@@ -1,6 +1,8 @@
 'use client'
+import { IInputProps } from "@/interfaces/IInputProps";
 
-function Input({type,name,id,placeholder,input,setInput}) {
+
+function Input({type,name,id,placeholder,input,setInput}:IInputProps) {
 
   return (
     <input

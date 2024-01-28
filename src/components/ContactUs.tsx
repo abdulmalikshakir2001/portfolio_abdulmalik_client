@@ -10,15 +10,13 @@ import { fetchApi } from "@/utility_functions/fetchApi";
 import "react-toastify/dist/ReactToastify.css";
 import Alert from "./Alert";
 const ContactUs = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [show, setShow] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [show, setShow] = useState<boolean> (false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-
     //  send form data to server
     fetchApi("/api/contact/saveContact", "POST", { email, name, message }).then(
       (data) => {
@@ -29,12 +27,10 @@ const ContactUs = () => {
           setMessage("");
         } else {
           alert('some thing went wrong')
-
         }
       }
     );
   };
-
   return (
     <>
       <div className="flex flex-col items-center mt-10" id="contact">
@@ -103,7 +99,6 @@ const ContactUs = () => {
                   id="message"
                   name="message"
                   placeholder="Message*"
-                  rows="4"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="w-full p-2 border-x-0 border-t-0 bg-transparent border-b-2  border-gray-500 focus:border-sky-400 focus:border-x-0   text-white  focus:ring-0"

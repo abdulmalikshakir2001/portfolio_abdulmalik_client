@@ -6,12 +6,21 @@ import { RiDeleteBin2Fill } from "react-icons/ri";
 import axios from "axios";
 import Button from "./Button";
 // import { useRouter } from 'next/navigation'
+interface IContact {
+  createdAt: string;
+  email: string;
+  message: string;
+  name: string;
+  updatedAt: string;
+  __v: number;
+  _id: string;
+}
 const Table = () => {
   // const router = useRouter();
 
   const [reRender, setReRender] = useState(false);
   // data table start
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IContact[]> ([]);
   const [page, setPage] = useState(1);
   const [totalContacts,setTotalContact] = useState(0)
   const limit = 10;
@@ -29,7 +38,7 @@ const Table = () => {
   // data table end
 
   // fetching contacts
-  let deleteData = (contactId) => {
+  let deleteData = (contactId:string|number) => {
     fetchApi("/api/contact/deleteContact", "POST", { contactId }).then(
       (data) => {
         setReRender(true);
