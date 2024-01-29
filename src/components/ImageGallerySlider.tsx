@@ -40,13 +40,16 @@ const ImageGallerySlider = () => {
         <button onClick={prevCard}><FaAnglesLeft  size="40px" /></button>
     {
         cards.length != 0 &&  Array.from({ length: 3 }, (_, i) => (current + i) % cards.length).map(index => (
+          <>
           <div key={index} className="relative  rounded-2xl h-full">
             <Image width="400" height="400"  src={`/api/files/${cards[index].image}`}  alt={cards[index].title} className='rounded-2xl' />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-200 rounded-2xl">
               <h2 className="text-white">{cards[index].title}</h2>
             </div>
-            <p className='mt-4 font-bold text-center' >{cards[index].title}</p>
+            
           </div>
+          <p className='mt-4 font-bold text-center' >{cards[index].title}</p>
+          </>
         ))
     }
         <button onClick={nextCard}><FaAnglesRight size="40px" /></button>
