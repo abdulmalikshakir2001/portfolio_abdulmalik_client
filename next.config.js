@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        destination: 'http://localhost:8000/:path*', // Proxy to Backend
+        destination: 'https://portfolio-abdulmalik-server.vercel.app/:path*', // Proxy to Backend
       },
     ];
   },
