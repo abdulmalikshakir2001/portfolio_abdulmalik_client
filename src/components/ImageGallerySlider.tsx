@@ -2,10 +2,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { FaAnglesRight,FaAnglesLeft } from "react-icons/fa6";
-
-
 import { fetchApi } from '@/utility_functions/fetchApi';
-
 interface ICardsType {
   createdAt: string;
   image: string;
@@ -14,17 +11,13 @@ interface ICardsType {
   __v: number;
   _id: string;
 }
-
 const ImageGallerySlider = () => {
-  
-
-  
   const [current, setCurrent] = useState(0); // Current index
   const [cards,setCards] = useState<ICardsType[]> ([])
   const [runUseEffectAgain,setRunUseEffectAgain] = useState(false)
   // https://portfolio-abdulmalik-server.vercel.app
   useEffect(()=>{
-    fetchApi(`https://portfolio-abdulmalik-server.vercel.app/api/project/allProjects`,"GET",{}).then((data)=>{
+    fetchApi(`/api/project/allProjects`,"GET",{}).then((data)=>{
       setCards(data.allProjects)
     })
     setRunUseEffectAgain(true)
