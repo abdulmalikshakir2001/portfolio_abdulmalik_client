@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { FaAnglesRight, FaAnglesLeft } from "react-icons/fa6";
 import { fetchApi } from "@/utility_functions/fetchApi";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import Image from 'next/image';
+
 interface ICardsType {
   createdAt: string;
   image: string;
@@ -11,6 +14,23 @@ interface ICardsType {
   __v: number;
   _id: string;
 }
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
 const ImageGallerySlider = () => {
   const [current, setCurrent] = useState(0); // Current index
   const [cards, setCards] = useState<ICardsType[]>([]);
@@ -19,53 +39,38 @@ const ImageGallerySlider = () => {
   useEffect(() => {
     fetchApi(`/api/project/allProjects`, "GET", {}).then((data) => {
       setCards(data.allProjects);
+    
+    
     });
     setRunUseEffectAgain(true);
   }, []);
   useEffect(() => {
     setRunUseEffectAgain(false);
   }, []);
-  const nextCard = () => {
-    setCurrent(current === cards.length - 1 ? 0 : current + 1);
-  };
 
-  const prevCard = () => {
-    setCurrent(current === 0 ? cards.length - 1 : current - 1);
-  };
   return (
-    <div className="flex flex-col  items-center justify-center" id="portfolio">
-      <h2 className="uppercase text-4xl font-bold mb-4">my portfolio</h2>
-      <div className="flex flex-wrap md:flex-nowrap  justify-center gap-6  md:flex-row flex-col items-center">
-        <button onClick={prevCard}>
-          <FaAnglesLeft size="40px" />
-        </button>
-        {cards.length != 0 &&
-          Array.from({ length: 3 }, (_, i) => (current + i) % cards.length).map(
-            (index) => (
-              <div key={index}>
-                <div className="relative  rounded-2xl h-full">
-                  <Image
-                    width="400"
-                    height="400"
-                    src={`/api/files/${cards[index].image}`}
-                    alt={cards[index].title}
-                    className="rounded-2xl"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-200 rounded-2xl">
-                    <h2 className="text-white">{cards[index].title}</h2>
-                  </div>
-                </div>
-                <p className="mt-4 font-bold text-center">
-                  {cards[index].title}
-                </p>
-              </div>
-            )
-          )}
-        <button onClick={nextCard}>
-          <FaAnglesRight size="40px" />
-        </button>
-      </div>
-    </div>
+
+<Carousel
+      swipeable={false}
+      draggable={false}
+      showDots={true}
+      responsive={responsive}
+      ssr={true} // means to render carousel on server-side.
+      keyBoardControl={true}
+      customTransition="all .5"
+      containerClass="carousel-container"
+      dotListClass="custom-dot-list-style"
+      itemClass="carousel-item-padding-40-px"
+    >
+      {cards.map((item) => (
+        <div key={item._id} className="m-4">
+          <Image src={`/api/files/${item.image}`} alt={item.title} layout="responsive" width={500} height={300} className="rounded-xl" />
+          <p className="legend">{item.title}</p>
+        </div>
+      ))}
+    </Carousel>
+
+
   );
 };
 export default ImageGallerySlider;
