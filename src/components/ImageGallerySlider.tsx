@@ -65,7 +65,7 @@ const ImageGallerySlider = () => {
       {cards.map((item) => (
         <div key={item._id} className="m-4">
           <Image src={`/api/files/${item.image}`} alt={item.title} layout="responsive" width={500} height={300} className="rounded-xl" />
-          <p className="legend">{item.title}</p>
+          <p className="legend font-bold text-center">{item.title}</p>
         </div>
       ))}
     </Carousel>
