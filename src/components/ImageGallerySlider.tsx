@@ -51,17 +51,20 @@ const ImageGallerySlider = () => {
   return (
 
 <Carousel
-      swipeable={false}
-      draggable={false}
-      showDots={true}
-      responsive={responsive}
-      ssr={true} // means to render carousel on server-side.
-      keyBoardControl={true}
-      customTransition="all .5"
-      
-      containerClass="carousel-container"
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
+swipeable={false}
+draggable={false}
+showDots={true}
+responsive={responsive}
+ssr={true} // means to render carousel on server-side.
+keyBoardControl={true}
+customTransition="all .5"
+transitionDuration={500}
+infinite={true}
+autoPlay={true}
+autoPlaySpeed={2000}
+containerClass="carousel-container"
+dotListClass="custom-dot-list-style"
+itemClass="carousel-item-padding-40-px"
     >
       {cards.map((item) => (
         <div key={item._id} className="m-4">
