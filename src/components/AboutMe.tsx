@@ -1,5 +1,5 @@
 import Image from "next/image";
-import malikPic from "../assets/malik_professional.JPG";
+import malikPic from "../assets/malik_professional.jpg";
 import Button from "./Button";
 function AboutMe() {
   return (
