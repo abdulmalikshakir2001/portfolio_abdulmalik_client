@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        destination: 'https://portfolio-abdulmalik-server.vercel.app/:path*', // Proxy to Backend
+        destination: 'http://localhost:8000/:path*', // Proxy to Backend
       },
     ];
   },
@@ -14,6 +14,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.pexels.com",
       },
+      
       {
         protocol: "https",
         hostname: "images.unsplash.com",
