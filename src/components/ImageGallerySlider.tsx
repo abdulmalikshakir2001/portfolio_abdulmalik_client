@@ -47,7 +47,7 @@ const ImageGallerySlider = () => {
     
     });
     setRunUseEffectAgain(true);
-  }, [cards]);
+  }, []);
   useEffect(() => {
     setRunUseEffectAgain(false);
   }, []);
