@@ -6,11 +6,13 @@ import { fetchApi } from "@/utility_functions/fetchApi";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Image from 'next/image';
+import Link from "next/link";
 
 interface ICardsType {
   createdAt: string;
   image: string;
   title: string;
+  project_url: string;
   updatedAt: string;
   __v: number;
   _id: string;
@@ -66,13 +68,18 @@ const ImageGallerySlider = () => {
       autoPlaySpeed={2000}
       containerClass="carousel-container"
       dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
+      itemClass="carousel-item-padding-40-px gallery_item"
     >
       {cards.map((item) => (
         <div key={item._id} className="m-4">
-          <Image src={`/api/files/${item.image}`} alt={item.title} layout="responsive" width={500} height={300} className="rounded-xl" />
+        <Link href={item.project_url===''?'#portfolio':item.project_url}   { ...(item.project_url !== '' && { target: '_blank' }) }>
+        <div  >
+          <Image src={`/api/files/${item.image}`} alt={item.title} layout="responsive" width={500} height={500} className="rounded-xl" />
           <p className="legend">{item.title}</p>
         </div>
+        </Link>
+        </div>
+
       ))}
     </Carousel>
 
