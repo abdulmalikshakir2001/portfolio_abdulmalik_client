@@ -33,6 +33,7 @@ const responsive = {
   }
 };
 const ImageGallerySlider = () => {
+  
   const [current, setCurrent] = useState(0); // Current index
   const [cards, setCards] = useState<ICardsType[]>([]);
   const [runUseEffectAgain, setRunUseEffectAgain] = useState(false);
