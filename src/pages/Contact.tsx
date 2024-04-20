@@ -43,7 +43,7 @@ function Contact() {
     <div className="contact_page   space-y-5 flex flex-col py-20 items-center" id="contact">
         <p className="text-royalBlue text-s18_w600">Contact with me</p>
         <h2 className="text-4.5xl" >Wanna Digitalize Your Idea ? </h2>
-        <p className="text-s18_w500 text-customLightGray w-2/3">Got an idea or a problem in your business? Let's make it happen! Reach out to me, and together, we'll turn your vision into reality.</p>
+        <p className="text-s18_w500 text-customLightGray w-2/3">Got an idea or a problem in your business? Let`s make it happen! Reach out to me, and together, we`ll turn your vision into reality.</p>
         <div className="container mx-auto">
         <Formik
        initialValues={{

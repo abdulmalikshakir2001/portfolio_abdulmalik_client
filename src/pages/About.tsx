@@ -32,7 +32,7 @@ function About() {
       <div className="right_side flex-1 space-y-5">
         <p className="text-s30_w600" >Connect with Me</p>
         <p className="text-customLightGray text-s16_w500">
-        Feel free to get in touch with me! Whether you have questions, feedback, or just want to say hello, I'm here to connect. Don't hesitate to reach out—I'd love to hear from you.
+        Feel free to get in touch with me! Whether you have questions, feedback, or just want to say hello, I`m here to connect. Don `t hesitate to reach out I`d love to hear from you.
         </p>
         
 

@@ -20,7 +20,7 @@ function Body() {
             <span className="text-4.5xl">Abdul Malik</span> 
             </h1>
           <h2 className="text-s20_w500" > <span className="text-customLightGray" >Mern Stack</span> Web developer</h2>
-          <p className="text-customLightGray">Empower your business with cutting-edge web technologies and innovative solutions. As a seasoned problem solver, I specialize in digitizing and enhancing businesses through advanced web development strategies. Whether you have a problem that needs solving or an idea waiting to be realized, I'm here to help you navigate the digital landscape and drive your business growth. Reach out today to explore how I can transform your vision into reality</p>
+          <p className="text-customLightGray">Empower your business with cutting-edge web technologies and innovative solutions. As a seasoned problem solver, I specialize in digitizing and enhancing businesses through advanced web development strategies. Whether you have a problem that needs solving or an idea waiting to be realized, I`m here to help you navigate the digital landscape and drive your business growth. Reach out today to explore how I can transform your vision into reality</p>
           <div className="contact_learn_butt flex flex-col tfifty:flex-row gap-2">
           
 
