@@ -34,7 +34,7 @@ function Portfolio() {
 
         </p>
       </div>
-      <div className="carousal_parent  px-10  fiveh:px-28  sevenh:px-10 nsix:px-40">
+      <div className="carousal_parent  px-20  fiveh:px-28  sevenh:px-15 nsix:px-40">
         <Carousel
           opts={{
             align: "start",

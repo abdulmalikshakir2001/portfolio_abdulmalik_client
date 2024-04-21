@@ -77,7 +77,7 @@ function TopNavigation() {
       }, []);
   return (
     <>
-      <div className={`top_nav_parent flex items-center  justify-between fixed z-10 bg-white h-24 w-full ${navBottomBoxShadow} px-10 tfifty:px-24`}>
+      <div className={`top_nav_parent flex items-center  justify-between fixed z-10 bg-white h-24 w-full ${navBottomBoxShadow} px-10 nsix:px-24`}>
         {/* image */}
         <Image src={companyLogo} alt="pixel.com" width={50} height={50} priority={true} />
         {/* menu links */}
