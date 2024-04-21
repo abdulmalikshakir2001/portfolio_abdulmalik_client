@@ -19,7 +19,7 @@ const config = {
     fontSize:{
 
       '4.5xl': ['45px', {
-        lineHeight: '40px',
+        lineHeight: '54px',
         fontWeight: '700',
       }],
       '4.4xl': ['44px', {

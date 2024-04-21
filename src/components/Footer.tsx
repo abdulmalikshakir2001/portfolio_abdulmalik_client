@@ -9,7 +9,7 @@ function Footer() {
     <div className="h-[70dvh] bg-customDarkBlue">
       <div className="grid grid-cols-4 grid-rows-70_30 h-full">
 
-        <div className="text-white space-y-5 place-self-center col-span-4 sevenh:col-span-2">
+        <div className="text-white space-y-5 place-self-center col-span-4 sevenh:col-span-2 px-14">
           <h2 className="text-4.4xl" >Let`s Talk!</h2>
           
           <h3 className="text-s24_w700">Contact Info</h3>
