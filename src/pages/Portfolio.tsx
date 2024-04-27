@@ -5,7 +5,7 @@ import { Card, CardFooter,CardContent } from "@/components/ui/card";
 import coworkMockup from "@/assets/cowork_mockup_malik_site.png";
 import corporateMockup from "@/assets/corporate_mockup_malik_site.png";
 import ecommerceMockup from "@/assets/ecommerce_mockup_malik_site.png";
-import erpCrm from "@/assets/erp_17.png";
+import erpdashboard from "@/assets/erp_dashboard_malik_site.png";
 import {
   Carousel,
   CarouselContent,
@@ -19,9 +19,10 @@ import Link from "next/link";
 function Portfolio() {
   const images = [
     // {title:"integrated chat+auth into existing web app",desc:"login mention users and start the chats 1)admin@gmail.com 2)user1@gmail.com",imgSrc:coworkMockup,link:""},
+    {title:"Enterprise Resource Planning",desc:"Register your account and you are good to go .  Note : This app is under development . ",imgSrc:erpdashboard,link:"https://malik-erp.gooposts.com/"},
     {title:"ecommerce app for buisness store",desc:"modular ecommerce app with beautiful ui for buisness store",imgSrc:ecommerceMockup,link:"https://ecommerce-client-lake-five.vercel.app/"},
     {title:"corporate website with beautiful ui",desc:"devoloped an corporate website for ui exploration",imgSrc:corporateMockup,link:"https://corporate-react.vercel.app/"},
-    {title:"integrated  crm in erp system",desc:"design and developed crm from scratch as a full stack web engineer",imgSrc:erpCrm,link:""},
+    
     
   ];
   return (
