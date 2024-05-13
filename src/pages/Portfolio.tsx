@@ -57,7 +57,7 @@ function Portfolio() {
                       <Image src={project.imgSrc}  fill alt="Picture of the author" />
                     </CardContent>
                     <CardFooter className="bg-customWhiteGray space-y-3" >
-                      <p className="text-s20_w600">{project.title}</p>
+                      <p className="text-s20_w600 underline">{project.title}</p>
                       <p className="text-s16_w500 text-customLightGray">{project.desc}</p>
                     </CardFooter>
                   </Card>
