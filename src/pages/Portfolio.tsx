@@ -7,6 +7,7 @@ import corporateMockup from "@/assets/corporate_mockup_malik_site.png";
 import ecommerceMockup from "@/assets/ecommerce_mockup_malik_site.png";
 import erpdashboard from "@/assets/erp_dashboard_malik_site.png";
 import bml from "@/assets/bml_malik_site.png";
+import  titiflix from "@/assets/titiflix_malik_site.png";
 import {
   Carousel,
   CarouselContent,
@@ -23,6 +24,7 @@ function Portfolio() {
     {title:"Enterprise Resource Planning",desc:"Register your account and you are good to go .  Note : This app is under development . ",imgSrc:erpdashboard,link:"https://malik-erp.gooposts.com/"},
     {title:"convert bml wordpress theme into pure tailwind css",desc:"convert bml  wordpress theme into pure tailwind css code ",imgSrc:bml,link:"https://bml.gooposts.com/"},
     {title:"integrated chat component + auth into existing web app",desc:"login two users to check the demo of chat app    1)email = one@gmail.com , password = 123456   2)email = two@gmail.com , password = 123456 ",imgSrc:coworkMockup,link:"https://cowork-front.gooposts.com/"},
+    {title:"convert titiflix wordpress theme into pure tailwind css code",desc:"convert titiflix wordpress theme into pure tailwind css code for BRAZIL client ",imgSrc:titiflix,link:"https://titiflix.gooposts.com/"},
     {title:"ecommerce app for buisness store",desc:"modular ecommerce app with beautiful ui for buisness store",imgSrc:ecommerceMockup,link:"https://ecommerce-client-lake-five.vercel.app/"},
     {title:"corporate website with beautiful ui",desc:"devoloped an corporate website for ui exploration",imgSrc:corporateMockup,link:"https://corporate-react.vercel.app/"},
     
