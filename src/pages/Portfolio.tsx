@@ -8,6 +8,7 @@ import ecommerceMockup from "@/assets/ecommerce_mockup_malik_site.png";
 import erpdashboard from "@/assets/erp_dashboard_malik_site.png";
 import bml from "@/assets/bml_malik_site.png";
 import  titiflix from "@/assets/titiflix_malik_site.png";
+import  plano from "@/assets/plano_malik_site.png";
 import {
   Carousel,
   CarouselContent,
@@ -27,6 +28,7 @@ function Portfolio() {
     {title:"convert titiflix wordpress theme into pure tailwind css code",desc:"convert titiflix wordpress theme into pure tailwind css code for BRAZIL client ",imgSrc:titiflix,link:"https://titiflix.gooposts.com/"},
     {title:"ecommerce app for buisness store",desc:"modular ecommerce app with beautiful ui for buisness store",imgSrc:ecommerceMockup,link:"https://ecommerce-client-lake-five.vercel.app/"},
     {title:"corporate website with beautiful ui",desc:"devoloped an corporate website for ui exploration",imgSrc:corporateMockup,link:"https://corporate-react.vercel.app/"},
+    {title:"convert plano wordpress themen into fully resposive tailwind css code",desc:"convert plano wordpress themen into fully resposive tailwind css code",imgSrc:plano,link:"https://plano.gooposts.com/"},
     
     
   ];
