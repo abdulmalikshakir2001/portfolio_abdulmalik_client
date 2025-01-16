@@ -9,6 +9,9 @@ import erpdashboard from "@/assets/erp_dashboard_malik_site.png";
 import bml from "@/assets/bml_malik_site.png";
 import  titiflix from "@/assets/titiflix_malik_site.png";
 import  plano from "@/assets/plano_malik_site.png";
+import  tms from "@/assets/tms_malik_site.jpeg";
+import  eciErp from "@/assets/erp_malik_site.jpeg";
+import  editur from "@/assets/editur_malik_site.jpeg";
 import {
   Carousel,
   CarouselContent,
@@ -22,6 +25,16 @@ import Link from "next/link";
 function Portfolio() {
   const images = [
     // {title:"integrated chat+auth into existing web app",desc:"login mention users and start the chats 1)admin@gmail.com 2)user1@gmail.com",imgSrc:coworkMockup,link:""},
+
+    {title:"TMS - Empowering Efficient and Effective Training Management",desc:`The TMS addresses these challenges by streamlining the organization, conduct, and monitoring of training programs. It integrates with existing systems, offers user-friendly interfaces, and ensures scalability and data security.
+    Key features include course management, scheduling tools, participant tracking, assessments, feedback collection, reporting, certificate management, user roles, and integration with HR systems. This system improves training efficiency, participant tracking, and real-time reporting, enhancing overall training effectiveness.`,imgSrc:tms,link:"https://ecitms.zetasoft.org/"},
+
+    {title:"Editur.ai - Converts Long Videos into Engaging Shorts",desc:` Editur.ai is a web-based OpenAI powered SaaS application built with the MERN stack. This innovative AI tool converts long videos into engaging short clips, ideal for social media and marketing. The app features advanced editing capabilities, automatic highlight detection, and seamless integration with various video platforms. My role encompassed full-stack development, user interface design, and deployment, ensuring a smooth and efficient user experience. Editur.ai has garnered positive feedback for its ease of use and effectiveness in enhancing video content.`,imgSrc:editur,link:"https://responsible-consideration-production.up.railway.app/"},
+
+    {title:"ERP - Integrated Solutions for Managing Business Processes",desc:`The ERP system addresses these challenges by providing a unified platform for managing core business processes, improving efficiency, and enabling better decision-making through real-time data access. It ensures seamless integration of various business modules and offers customization to meet specific requirements.
+
+Key features include finance, HR, inventory, and sales modules, centralized data management, real-time reporting, workflow automation, customizable dashboards, and mobile access. This system streamlines processes, enhances data accuracy, and supports business growth.`,imgSrc:eciErp,link:"https://erpdemo.zetasoft.org/login"},
+
     {title:"Enterprise Resource Planning",desc:"Register your account and you are good to go .  Note : This app is under development . ",imgSrc:erpdashboard,link:"https://malik-erp.gooposts.com/"},
     {title:"convert bml wordpress theme into pure tailwind css",desc:"convert bml  wordpress theme into pure tailwind css code ",imgSrc:bml,link:"https://bml.gooposts.com/"},
     {title:"integrated chat component + auth into existing web app",desc:"login two users to check the demo of chat app    1)email = one@gmail.com , password = 123456   2)email = two@gmail.com , password = 123456 ",imgSrc:coworkMockup,link:"https://cowork-front.gooposts.com/"},
