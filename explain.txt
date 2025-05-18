@@ -1,0 +1,5 @@
+create new folder for server in which we will develop backend . backend should be in node,express , mysql2 create two tables "contacts" which will contain name (must) , company(opt) , email (must),phone_number(must),message(opt). second table will be "projects" which will contain image (must) , title (must) , description (must) , project image from frontend store on backend and in db store only path to image.
+
+
+ handle other logics like validation and show proper messages and alert where necessary for better ux experience. Remeber i have already form for contact on front you just creat api and enter data to db ,in front i will update the api link by myself for javascript contact details  . also table should be migrate by js code not .sql file .
+  i have contact form on front but on dashboard also show all contacts with edit and delelete like projects.

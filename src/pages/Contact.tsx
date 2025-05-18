@@ -22,7 +22,7 @@ function Contact() {
   console.log(process.env.SERVER_URL);
   
   const handleOnSubmit =  (values:any,{resetForm}:any) => {
-    post(`/contact/saveContact`,values).then((res)=>{
+    post(`/contacts`,values).then((res)=>{
       resetForm()
       
       toast.success('Your message has been sent!', {
