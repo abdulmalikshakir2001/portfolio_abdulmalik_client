@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { Upload, Plus, Pencil, Trash2, X } from 'lucide-react';
+import   { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { Upload, Plus, Pencil, Trash2, X, CloudCog } from 'lucide-react';
 import { Editor } from '@tinymce/tinymce-react';
+import ImageUploader from '@/components/ImagesUploader';
 
 interface Project {
   id: string;
@@ -12,18 +13,40 @@ interface Project {
   createdAt: string;
 }
 
+
 interface ProjectFormData {
   title: string;
   description: string;
   image: File | null;
 }
 
-export default function ProjectForm() {
+const  ProjectForm =   ()=> {
+  console.log('parent re render on child chagne')
+
+  
   // State for projects list and loading status
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [images, setImages] = useState<File[]>([]);
 
+
+  const handleSetImages: React.Dispatch<React.SetStateAction<File[]>> = (value) => {
+    setImages((prevImages) => {
+      const newImages = typeof value === 'function' ? value(prevImages) : value;
+  
+      // Detect added or removed images
+      if (newImages.length > prevImages.length) {
+        const added = newImages.slice(prevImages.length);
+        console.log('🟢 Images added:', added);
+      } else if (newImages.length < prevImages.length) {
+        const removed = prevImages.filter(img => !newImages.includes(img));
+        console.log('🔴 Images removed:', removed);
+      }
+  
+      return newImages;
+    });
+  };
   useEffect(() => {
     console.log(projects);
     
@@ -161,7 +184,7 @@ export default function ProjectForm() {
         image: file,
       });
       
-      // Create image preview
+      //  image preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result as string);
@@ -182,42 +205,48 @@ export default function ProjectForm() {
     resetForm();
   };
 
+  const handleImagesChange = (images: File[]) => {
+    setFormData(prev => ({ ...prev, images }));
+  };
+
   // Handle form submission for both create and update operations
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     if (!formData.title || !formData.description) {
       alert('Please fill in all required fields');
       return;
     }
-
+  
     const data = new FormData();
     data.append('title', formData.title);
     data.append('description', formData.description);
-    
-    if (formData.image) {
-      data.append('image', formData.image);
-    }
-
+    data.append('image', formData.image!); // Single thumbnail
+  
+    // ✅ Append multiple images
+    images.forEach((image, index) => {
+      data.append('images', image); // backend should accept multiple "images"
+    });
+  
     try {
       let url = `${process.env.NEXT_PUBLIC_SERVER_URL}/projects`;
       let method = 'POST';
-
+  
       if (isEditing && currentProjectId) {
         url = `${process.env.NEXT_PUBLIC_SERVER_URL}/projects/${currentProjectId}`;
         method = 'PUT';
       }
-
+  
       const res = await fetch(url, {
         method: method,
         body: data,
       });
-
+  
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.message || 'An error occurred');
       }
-
+  
       // Refresh the projects list and close the modal
       fetchProjects();
       closeModal();
@@ -227,6 +256,7 @@ export default function ProjectForm() {
       setError(err.message || 'Failed to save project. Please try again later.');
     }
   };
+  
 
   // Format date for display
   const formatDate = (dateString: string) => {
@@ -316,9 +346,13 @@ export default function ProjectForm() {
                 ))}
               </tbody>
             </table>
+            
           )}
         </div>
       )}
+
+
+
 
       {/* Modal for Create/Edit Project */}
       {showModal && (
@@ -410,12 +444,24 @@ export default function ProjectForm() {
                   value={formData.description}
                   onEditorChange={handleDescriptionChange}
                   init={{
-                    height: 300,
-                    menubar: false,
-                    plugins: 'lists link image table code',
-                    toolbar: 'undo redo | formatselect | bold italic underline | bullist numlist | link image | table | code',
-                  }}
+  height: 300,
+  menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table paste code help wordcount'
+  ],
+  toolbar:
+    'undo redo | formatselect | bold italic backcolor | \
+    alignleft aligncenter alignright alignjustify | \
+    bullist numlist outdent indent | removeformat | help'
+}}
                 />
+              </div>
+
+              <div className='mb-6'>
+              <ImageUploader images={images} setImages={handleSetImages} />
+
               </div>
               
               <div className="flex justify-end space-x-3">
@@ -440,3 +486,4 @@ export default function ProjectForm() {
     </div>
   );
 }
+export default ProjectForm;
