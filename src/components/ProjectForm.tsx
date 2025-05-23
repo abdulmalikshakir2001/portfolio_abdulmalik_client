@@ -122,7 +122,7 @@ const  ProjectForm =   ()=> {
       
       console.log(project.data);
       
-
+      setCurrentProjectId(project.data.id)
       
       setFormData({
         title: project.data.title,
@@ -219,7 +219,7 @@ const  ProjectForm =   ()=> {
   };
 
   // Handle form submission for both create and update operations
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmitCreate = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   
     if (!formData.title || !formData.description) {
@@ -265,7 +265,97 @@ const  ProjectForm =   ()=> {
       setError(err.message || 'Failed to save project. Please try again later.');
     }
   };
+
   
+  const handleSubmitUpdate = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  // Validation
+  if (!formData.title || !formData.description) {
+    alert('Please fill in all required fields');
+    return;
+  }
+
+  if (!currentProjectId) {
+    setError('No project selected for update');
+    return;
+  }
+
+  try {
+    setLoading(true);
+    
+    // Create FormData for multipart/form-data request
+    const data = new FormData();
+    data.append('title', formData.title);
+    data.append('description', formData.description);
+    
+    // Add main project image if user selected a new one
+    if (formData.image) {
+      data.append('image', formData.image);
+    }
+    
+    // Send retained server image URLs as JSON string (matching backend expectation)
+    data.append('retainedServerImageUrls', JSON.stringify(serverImageUrls || []));
+    
+    // Send newly uploaded images as 'images' (matching backend req.files?.images)
+    if (uploadedImages && uploadedImages.length > 0) {
+      uploadedImages.forEach((image) => {
+        data.append('images', image);
+      });
+    }
+
+    console.log('Updating project with:', {
+      title: formData.title,
+      description: formData.description.substring(0, 50) + '...',
+      hasNewThumbnail: !!formData.image,
+      retainedImages: serverImageUrls?.length || 0,
+      newImages: uploadedImages?.length || 0
+    });
+
+    // Make the API call
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/projects/project/${currentProjectId}`, {
+      method: 'PUT',
+      body: data,
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || `HTTP error! status: ${res.status}`);
+    }
+
+    const responseData = await res.json();
+    console.log('Project updated successfully:', responseData);
+
+    // Refresh projects list to get updated data
+    await fetchProjects();
+
+    // Reset form and close modal
+    closeModal();
+    setError(null);
+    
+    // Reset image states
+    setImages([]);
+    setUploadedImages([]);
+    setServerImageUrls([]);
+    
+    // Show success message
+    alert('Project updated successfully!');
+
+  } catch (err: any) {
+    console.error('Error updating project:', err);
+    setError(err.message || 'Failed to update project. Please try again later.');
+  } finally {
+    setLoading(false);
+  }
+};
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  if (isEditing) {
+    await handleSubmitUpdate(e);
+  } else {
+    await handleSubmitCreate(e);
+  }
+};
+
 
   // Format date for display
   const formatDate = (dateString: string) => {
@@ -379,7 +469,7 @@ const  ProjectForm =   ()=> {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit= {handleSubmit}>
               <div className="mb-6">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
                   Project Image {!isEditing && <span className="text-red-500">*</span>}
@@ -491,12 +581,21 @@ const  ProjectForm =   ()=> {
                 >
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  {isEditing ? 'Update Project' : 'Create Project'}
-                </button>
+                 {isEditing ? (
+    <button
+      type="submit"
+      className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+      Update Project
+    </button>
+  ) : (
+    <button
+      type="submit"
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+      Create Project
+    </button>
+  )}
               </div>
             </form>
           </div>
