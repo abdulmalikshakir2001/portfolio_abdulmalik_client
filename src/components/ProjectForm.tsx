@@ -4,6 +4,7 @@ import   { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Upload, Plus, Pencil, Trash2, X, CloudCog } from 'lucide-react';
 import { Editor } from '@tinymce/tinymce-react';
 import ImageUploader from '@/components/ImagesUploader';
+import ImageUploaderUpdate from '@/components/ImageUploaderUpdate';
 
 interface Project {
   id: string;
@@ -29,6 +30,8 @@ const  ProjectForm =   ()=> {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [images, setImages] = useState<File[]>([]);
+  const [uploadedImages, setUploadedImages] = useState<File[]>([]);
+  const [serverImageUrls, setServerImageUrls] = useState<string[]>([]);
 
 
   const handleSetImages: React.Dispatch<React.SetStateAction<File[]>> = (value) => {
@@ -116,7 +119,10 @@ const  ProjectForm =   ()=> {
       }
 
       const project = await res.json();
-      console.log(project);
+      
+      console.log(project.data);
+      
+
       
       setFormData({
         title: project.data.title,
@@ -124,11 +130,14 @@ const  ProjectForm =   ()=> {
         image: null,
       });
       
+      
       setImagePreview(`${process.env.NEXT_PUBLIC_SERVER_URL}${project.data.image_path}`);
       setIsEditing(true);
       setCurrentProjectId(projectId);
       setShowModal(true);
       setError(null);
+      setImages(project.data.images_paths);
+      setServerImageUrls(project.data.images_paths)
     } catch (err) {
       console.error('Error fetching project details:', err);
       setError('Failed to load project details. Please try again later.');
@@ -460,7 +469,17 @@ const  ProjectForm =   ()=> {
               </div>
 
               <div className='mb-6'>
-              <ImageUploader images={images} setImages={handleSetImages} />
+              {!isEditing ? (
+  <ImageUploader images={images} setImages={handleSetImages} />
+) : (
+  <ImageUploaderUpdate
+    serverImageUrls={serverImageUrls}
+    setServerImageUrls={setServerImageUrls}
+    uploadedImages={uploadedImages}
+    setUploadedImages={setUploadedImages}
+  />
+)}
+
 
               </div>
               
