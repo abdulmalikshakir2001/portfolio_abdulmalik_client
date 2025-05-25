@@ -246,9 +246,12 @@ useEffect(() => {
 
                 <div className="mb-8">
                   
-                  <div className="text-gray-700 leading-relaxed whitespace-pre-line bg-gray-50 p-6 rounded-lg">
-                     {parse(selectedProject.description)}
-                  </div>
+  <div
+  className="prose max-w-none bg-gray-50 p-6 rounded-lg text-black marker:text-black"
+  dangerouslySetInnerHTML={{ __html: selectedProject.description }}
+/>
+
+
                 </div>
                 </div>
 
