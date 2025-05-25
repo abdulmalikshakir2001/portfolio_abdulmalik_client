@@ -13,7 +13,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   
   // Check if the current path is active
   const isActive = (path: string) => {
-    return pathname === path || pathname.startsWith(`${path}/`);
+    return pathname === path || pathname?.startsWith(`${path}/`);
   };
 
   return (

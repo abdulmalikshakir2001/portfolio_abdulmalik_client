@@ -133,7 +133,10 @@ useEffect(() => {
           <p className="text-royalBlue text-s18_w600">Creative Portfolios</p>
           <h2 className="text-4.5xl px-10">Recent Works</h2>
           <p className="text-s18_w500 text-customLightGray w-2/3">
+          {`
             I've built a bunch of cool stuff like business management systems (ERP), online stores, chat apps, and professional websites. And get this—I made them all from scratch using MERN stack. So, if you need something awesome for your business, I'm your go-to person. Let's chat and see how I can bring your ideas to life!
+          `}
+
           </p>
         </div>
 
