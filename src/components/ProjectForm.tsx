@@ -539,21 +539,22 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                   Project Description <span className="text-red-500">*</span>
                 </label>
                 <Editor
-                  apiKey="luw4veh4vumulhvnmu1njaknmnxkl9f38e9djsy0fe3ce5vi"
+                  apiKey="no-api-key"
                   value={formData.description}
                   onEditorChange={handleDescriptionChange}
                   init={{
   height: 300,
   menubar: false,
   plugins: [
-    'advlist autolink lists link image charmap preview anchor',
-    'searchreplace visualblocks code fullscreen',
-    'insertdatetime media table paste code help wordcount'
+    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
   ],
   toolbar:
-    'undo redo | formatselect | bold italic backcolor | \
-    alignleft aligncenter alignright alignjustify | \
-    bullist numlist outdent indent | removeformat | help'
+    'undo redo | blocks | ' +
+            'bold italic forecolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
 }}
                 />
               </div>
