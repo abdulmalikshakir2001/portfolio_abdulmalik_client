@@ -55,11 +55,15 @@ useEffect(() => {
   fetchProjects();
 }, []);
 
-  const truncateDescription = (text: string, wordLimit = 8): string => {
-    const words = text.split(" ");
-    if (words.length <= wordLimit) return text;
-    return words.slice(0, wordLimit).join(" ") + "...";
-  };
+const truncateDescription = (text: string, wordLimit = 8): string => {
+  // Remove HTML tags and decode entities if necessary
+  const cleanedText = text.replace(/<\/?[^>]+(>|$)/g, ""); // removes HTML tags
+  const words = cleanedText.trim().split(/\s+/).filter(Boolean);
+
+  if (words.length <= wordLimit) return cleanedText;
+
+  return words.slice(0, wordLimit).join(" ") + " ...";
+};
 
   const handleCardClick = async (project: Project) => {
     try {
