@@ -539,7 +539,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                   Project Description <span className="text-red-500">*</span>
                 </label>
                 <Editor
-                  apiKey="no-api-key"
+                  apiKey="luw4veh4vumulhvnmu1njaknmnxkl9f38e9djsy0fe3ce5vi"
                   value={formData.description}
                   onEditorChange={handleDescriptionChange}
                   init={{
