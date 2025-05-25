@@ -126,6 +126,13 @@ useEffect(() => {
     );
   }
 
+  const cleanHTML = (html: string) => {
+  return html
+    .replace(/<p>(&nbsp;|\s)*<\/p>/gi, '') // removes empty or non-breaking-space <p> tags
+    .replace(/^\s+|\s+$/g, '');            // trims leading/trailing whitespace in string
+};
+
+
   return (
     <>
       <div className="mt-24 bg-gray-50 space-y-5 flex flex-col py-20" id="portfolio">
@@ -246,11 +253,10 @@ useEffect(() => {
 
                 <div className="mb-8">
                   
-  <div
+<div
   className="prose max-w-none bg-gray-50 p-6 rounded-lg text-black marker:text-black"
-  dangerouslySetInnerHTML={{ __html: selectedProject.description }}
+  dangerouslySetInnerHTML={{ __html: cleanHTML(selectedProject.description) }}
 />
-
 
                 </div>
                 </div>
