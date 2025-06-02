@@ -1,14 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'images.pexels.com',
-            port: '',
-          },
-        ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'malikserver-production.up.railway.app',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

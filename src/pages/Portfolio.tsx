@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 // Define types
 interface ProjectImage {
@@ -162,10 +163,11 @@ const truncateDescription = (text: string, wordLimit = 8): string => {
                       onClick={() => handleCardClick(project)}
                     >
                       <CardContent className="flex aspect-square items-center justify-center relative h-60 w-full p-0 overflow-hidden rounded-t-lg">
-                        <img
+                        <Image
                           src={`${process.env.NEXT_PUBLIC_SERVER_URL}${project.image_path}`}
                           alt={project.title}
                           className="w-full h-full object-fill transition-transform duration-300 hover:scale-110"
+                          fill
                         />
                       </CardContent>
                       <CardFooter className="bg-white p-6 space-y-3 flex flex-col items-start">
