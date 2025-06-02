@@ -19,7 +19,7 @@ function Footer() {
           </Link>
           <p className="text-s16_w500">Faisal colony Dalazak road peshawar city pakistan</p>
           <Link href="https://wa.me/03089429794" >
-          <p className="text-s16_w500">0308 94 29 794</p>
+          <p className="text-s16_w500">+92 308 94 29 794</p>
           </Link>
           </div>
 
